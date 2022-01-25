@@ -29,6 +29,13 @@ class AvatarsPage extends StatelessWidget {
           title: Text('Circular avatars'),
         ),
         _buildCircularAvatars(),
+        const SizedBox(
+          height: 4 * 4,
+        ),
+        const ListTile(
+          title: Text('Rounded avatars'),
+        ),
+        _buildRoundedAvatars(),
       ],
     );
   }
@@ -46,6 +53,28 @@ class AvatarsPage extends StatelessWidget {
           children: List.generate(
             5,
             (int index) => CircularAvatar(
+              size: 6 + (index * 2),
+              src: _avatarUrl,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildRoundedAvatars() {
+    return Card(
+      margin: const EdgeInsets.symmetric(
+        horizontal: 4 * 4,
+      ),
+      child: Container(
+        padding: const EdgeInsets.all(4 * 4),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: List.generate(
+            5,
+            (int index) => RoundedAvatar(
               size: 6 + (index * 2),
               src: _avatarUrl,
             ),
