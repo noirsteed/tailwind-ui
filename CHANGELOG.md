@@ -17,3 +17,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Circular avatar with placeholder initials component
 - Avatar group bottom to top component
 - Avatar group top to bottom component
+- Profile tile component

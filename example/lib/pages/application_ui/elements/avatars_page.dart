@@ -119,6 +119,13 @@ class AvatarsPage extends StatelessWidget {
         const SizedBox(
           height: 4 * 4,
         ),
+        const ListTile(
+          title: Text('With text'),
+        ),
+        _buildWithText(),
+        const SizedBox(
+          height: 4 * 4,
+        ),
       ],
     );
   }
@@ -348,6 +355,22 @@ class AvatarsPage extends StatelessWidget {
               srcs: const [_avatar1Url, _avatar2Url, _avatar3Url, _avatar4Url],
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildWithText() {
+    return Card(
+      margin: const EdgeInsets.symmetric(
+        horizontal: 4 * 4,
+      ),
+      child: Container(
+        padding: const EdgeInsets.all(4 * 4),
+        alignment: Alignment.center,
+        child: const ProfileTile(
+          src: _avatar4Url,
+          name: 'Tom Cook',
         ),
       ),
     );

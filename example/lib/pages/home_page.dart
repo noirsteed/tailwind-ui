@@ -53,7 +53,7 @@ class HomePage extends StatelessWidget {
       ),
       child: ListTile(
         title: const Text('Avatars'),
-        subtitle: const Text('10 components'),
+        subtitle: const Text('11 components'),
         trailing: const Icon(Icons.chevron_right),
         onTap: () => Navigator.of(context).push(MaterialPageRoute(
           builder: (BuildContext context) => const AvatarsPage(),
