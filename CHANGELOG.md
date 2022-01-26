@@ -14,3 +14,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Circular avatar with notification component
 - Rounded avatar with notification component
 - Circular avatar with placeholder icon component
+- Circular avatar with placeholder initials component

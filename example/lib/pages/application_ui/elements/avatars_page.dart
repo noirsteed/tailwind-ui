@@ -13,6 +13,14 @@ class AvatarsPage extends StatelessWidget {
     tailwind.Colors.green400,
   ];
 
+  static const List<double> _initialsSizes = [
+    tailwind.FontSizes.textXs,
+    tailwind.FontSizes.textSm,
+    tailwind.FontSizes.textBase,
+    tailwind.FontSizes.textLg,
+    tailwind.FontSizes.textXl,
+  ];
+
   const AvatarsPage({Key? key}) : super(key: key);
 
   @override
@@ -78,6 +86,13 @@ class AvatarsPage extends StatelessWidget {
           title: Text('Circular avatars with placeholder icon'),
         ),
         _buildCircularAvatarsWithPlaceholderIcon(),
+        const SizedBox(
+          height: 4 * 4,
+        ),
+        const ListTile(
+          title: Text('Circular avatars with placeholder initials'),
+        ),
+        _buildCircularAvatarsWithPlaceholderInitials(),
         const SizedBox(
           height: 4 * 4,
         ),
@@ -239,6 +254,29 @@ class AvatarsPage extends StatelessWidget {
             5,
             (int index) => CircularAvatarWithPlaceholderIcon(
               size: 6 + (index * 2),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCircularAvatarsWithPlaceholderInitials() {
+    return Card(
+      margin: const EdgeInsets.symmetric(
+        horizontal: 4 * 4,
+      ),
+      child: Container(
+        padding: const EdgeInsets.all(4 * 4),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: List.generate(
+            5,
+            (int index) => CircularAvatarWithPlaceholderInitials(
+              size: 6 + (index * 2),
+              fontSize: _initialsSizes[index],
+              initials: 'TW',
             ),
           ),
         ),

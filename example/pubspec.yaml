@@ -20,3 +20,15 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Thin.otf
+        - asset: assets/fonts/Inter-ExtraLight.otf
+        - asset: assets/fonts/Inter-Light.otf
+        - asset: assets/fonts/Inter-Regular.otf
+        - asset: assets/fonts/Inter-Medium.otf
+        - asset: assets/fonts/Inter-SemiBold.otf
+        - asset: assets/fonts/Inter-Bold.otf
+        - asset: assets/fonts/Inter-ExtraBold.otf
+        - asset: assets/fonts/Inter-Black.otf
