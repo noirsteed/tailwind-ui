@@ -49,329 +49,220 @@ class AvatarsPage extends StatelessWidget {
   Widget _buildBody() {
     return ListView(
       children: [
-        const ListTile(
-          title: Text('Circular avatars'),
+        ..._buildSection('Circular avatars', _buildCircularAvatars()),
+        ..._buildSection('Rounded avatars', _buildRoundedAvatars()),
+        ..._buildSection(
+          'ircular avatars with top notification',
+          _buildCircularAvatarsWithTopNotification(),
         ),
-        _buildCircularAvatars(),
-        const SizedBox(
-          height: 4 * 4,
+        ..._buildSection(
+          'Rounded avatars with top notification',
+          _buildRoundedAvatarsWithTopNotification(),
         ),
-        const ListTile(
-          title: Text('Rounded avatars'),
+        ..._buildSection(
+          'Circular avatars with bottom notification',
+          _buildCircularAvatarsWithBottomNotification(),
         ),
-        _buildRoundedAvatars(),
-        const SizedBox(
-          height: 4 * 4,
+        ..._buildSection(
+          'Rounded avatars with bottom notification',
+          _buildRoundedAvatarsWithBottomNotification(),
         ),
-        const ListTile(
-          title: Text('Circular avatars with top notification'),
+        ..._buildSection(
+          'Circular avatars with placeholder icon',
+          _buildCircularAvatarsWithPlaceholderIcon(),
         ),
-        _buildCircularAvatarsWithTopNotification(),
-        const SizedBox(
-          height: 4 * 4,
+        ..._buildSection(
+          'Circular avatars with placeholder initials',
+          _buildCircularAvatarsWithPlaceholderInitials(),
         ),
-        const ListTile(
-          title: Text('Rounded avatars with top notification'),
+        ..._buildSection(
+          'Avatar group stacked bottom to top',
+          _buildAvatarGroupStackedBottomToTop(),
         ),
-        _buildRoundedAvatarsWithTopNotification(),
-        const SizedBox(
-          height: 4 * 4,
+        ..._buildSection(
+          'Avatar group stacked top to bottom',
+          _buildAvatarGroupStackedTopToBottom(),
         ),
-        const ListTile(
-          title: Text('Circular avatars with bottom notification'),
-        ),
-        _buildCircularAvatarsWithBottomNotification(),
-        const SizedBox(
-          height: 4 * 4,
-        ),
-        const ListTile(
-          title: Text('Rounded avatars with bottom notification'),
-        ),
-        _buildRoundedAvatarsWithBottomNotification(),
-        const SizedBox(
-          height: 4 * 4,
-        ),
-        const ListTile(
-          title: Text('Circular avatars with placeholder icon'),
-        ),
-        _buildCircularAvatarsWithPlaceholderIcon(),
-        const SizedBox(
-          height: 4 * 4,
-        ),
-        const ListTile(
-          title: Text('Circular avatars with placeholder initials'),
-        ),
-        _buildCircularAvatarsWithPlaceholderInitials(),
-        const SizedBox(
-          height: 4 * 4,
-        ),
-        const ListTile(
-          title: Text('Avatar group stacked bottom to top'),
-        ),
-        _buildAvatarGroupStackedBottomToTop(),
-        const SizedBox(
-          height: 4 * 4,
-        ),
-        const ListTile(
-          title: Text('Avatar group stacked top to bottom'),
-        ),
-        _buildAvatarGroupStackedTopToBottom(),
-        const SizedBox(
-          height: 4 * 4,
-        ),
-        const ListTile(
-          title: Text('With text'),
-        ),
-        _buildWithText(),
-        const SizedBox(
-          height: 4 * 4,
-        ),
+        ..._buildSection('With text', _buildWithText()),
       ],
     );
   }
 
-  Widget _buildCircularAvatars() {
-    return Card(
-      margin: const EdgeInsets.symmetric(
-        horizontal: 4 * 4,
+  List<Widget> _buildSection(String title, Widget child) {
+    return [
+      ListTile(
+        title: Text(title),
       ),
-      child: Container(
-        padding: const EdgeInsets.all(4 * 4),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: List.generate(
-            5,
-            (int index) => CircularAvatar(
-              size: 6 + (index * 2),
-              src: _avatar4Url,
-            ),
-          ),
+      Card(
+        margin: const EdgeInsets.symmetric(
+          horizontal: 4 * 4,
+        ),
+        child: Container(
+          padding: const EdgeInsets.all(4 * 4),
+          child: child,
+        ),
+      ),
+      const SizedBox(
+        height: 4 * 4,
+      ),
+    ];
+  }
+
+  Widget _buildCircularAvatars() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: List.generate(
+        5,
+        (int index) => CircularAvatar(
+          size: 6 + (index * 2),
+          src: _avatar4Url,
         ),
       ),
     );
   }
 
   Widget _buildRoundedAvatars() {
-    return Card(
-      margin: const EdgeInsets.symmetric(
-        horizontal: 4 * 4,
-      ),
-      child: Container(
-        padding: const EdgeInsets.all(4 * 4),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: List.generate(
-            5,
-            (int index) => RoundedAvatar(
-              size: 6 + (index * 2),
-              src: _avatar4Url,
-            ),
-          ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: List.generate(
+        5,
+        (int index) => RoundedAvatar(
+          size: 6 + (index * 2),
+          src: _avatar4Url,
         ),
       ),
     );
   }
 
   Widget _buildCircularAvatarsWithTopNotification() {
-    return Card(
-      margin: const EdgeInsets.symmetric(
-        horizontal: 4 * 4,
-      ),
-      child: Container(
-        padding: const EdgeInsets.all(4 * 4),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: List.generate(
-            6,
-            (int index) => CircularAvatarWithNotification(
-              size: 6 + (index * 2),
-              src: _avatar4Url,
-              notificationAlignment: Alignment.topRight,
-              notificationColor: _notificationColors[index % 3],
-            ),
-          ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: List.generate(
+        6,
+        (int index) => CircularAvatarWithNotification(
+          size: 6 + (index * 2),
+          src: _avatar4Url,
+          notificationAlignment: Alignment.topRight,
+          notificationColor: _notificationColors[index % 3],
         ),
       ),
     );
   }
 
   Widget _buildRoundedAvatarsWithTopNotification() {
-    return Card(
-      margin: const EdgeInsets.symmetric(
-        horizontal: 4 * 4,
-      ),
-      child: Container(
-        padding: const EdgeInsets.all(4 * 4),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: List.generate(
-            6,
-            (int index) => RoundedAvatarWithNotification(
-              size: 6 + (index * 2),
-              src: _avatar4Url,
-              notificationAlignment: Alignment.topRight,
-              notificationColor: _notificationColors[index % 3],
-            ),
-          ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: List.generate(
+        6,
+        (int index) => RoundedAvatarWithNotification(
+          size: 6 + (index * 2),
+          src: _avatar4Url,
+          notificationAlignment: Alignment.topRight,
+          notificationColor: _notificationColors[index % 3],
         ),
       ),
     );
   }
 
   Widget _buildCircularAvatarsWithBottomNotification() {
-    return Card(
-      margin: const EdgeInsets.symmetric(
-        horizontal: 4 * 4,
-      ),
-      child: Container(
-        padding: const EdgeInsets.all(4 * 4),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: List.generate(
-            6,
-            (int index) => CircularAvatarWithNotification(
-              size: 6 + (index * 2),
-              src: _avatar4Url,
-              notificationAlignment: Alignment.bottomRight,
-              notificationColor: _notificationColors[index % 3],
-            ),
-          ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: List.generate(
+        6,
+        (int index) => CircularAvatarWithNotification(
+          size: 6 + (index * 2),
+          src: _avatar4Url,
+          notificationAlignment: Alignment.bottomRight,
+          notificationColor: _notificationColors[index % 3],
         ),
       ),
     );
   }
 
   Widget _buildRoundedAvatarsWithBottomNotification() {
-    return Card(
-      margin: const EdgeInsets.symmetric(
-        horizontal: 4 * 4,
-      ),
-      child: Container(
-        padding: const EdgeInsets.all(4 * 4),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: List.generate(
-            6,
-            (int index) => RoundedAvatarWithNotification(
-              size: 6 + (index * 2),
-              src: _avatar4Url,
-              notificationAlignment: Alignment.bottomRight,
-              notificationColor: _notificationColors[index % 3],
-            ),
-          ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: List.generate(
+        6,
+        (int index) => RoundedAvatarWithNotification(
+          size: 6 + (index * 2),
+          src: _avatar4Url,
+          notificationAlignment: Alignment.bottomRight,
+          notificationColor: _notificationColors[index % 3],
         ),
       ),
     );
   }
 
   Widget _buildCircularAvatarsWithPlaceholderIcon() {
-    return Card(
-      margin: const EdgeInsets.symmetric(
-        horizontal: 4 * 4,
-      ),
-      child: Container(
-        padding: const EdgeInsets.all(4 * 4),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: List.generate(
-            5,
-            (int index) => CircularAvatarWithPlaceholderIcon(
-              size: 6 + (index * 2),
-            ),
-          ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: List.generate(
+        5,
+        (int index) => CircularAvatarWithPlaceholderIcon(
+          size: 6 + (index * 2),
         ),
       ),
     );
   }
 
   Widget _buildCircularAvatarsWithPlaceholderInitials() {
-    return Card(
-      margin: const EdgeInsets.symmetric(
-        horizontal: 4 * 4,
-      ),
-      child: Container(
-        padding: const EdgeInsets.all(4 * 4),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: List.generate(
-            5,
-            (int index) => CircularAvatarWithPlaceholderInitials(
-              size: 6 + (index * 2),
-              fontSize: _initialsSizes[index],
-              initials: 'TW',
-            ),
-          ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: List.generate(
+        5,
+        (int index) => CircularAvatarWithPlaceholderInitials(
+          size: 6 + (index * 2),
+          fontSize: _initialsSizes[index],
+          initials: 'TW',
         ),
       ),
     );
   }
 
   Widget _buildAvatarGroupStackedBottomToTop() {
-    return Card(
-      margin: const EdgeInsets.symmetric(
-        horizontal: 4 * 4,
-      ),
-      child: Container(
-        padding: const EdgeInsets.all(4 * 4),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: List.generate(
-            3,
-            (int index) => AvatarGroupBottomToTop(
-              size: 6 + (index * 2),
-              overlap: (index * 2 / 6).ceil() + 1,
-              srcs: const [_avatar1Url, _avatar2Url, _avatar3Url, _avatar4Url],
-            ),
-          ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: List.generate(
+        3,
+        (int index) => AvatarGroupBottomToTop(
+          size: 6 + (index * 2),
+          overlap: (index * 2 / 6).ceil() + 1,
+          srcs: const [_avatar1Url, _avatar2Url, _avatar3Url, _avatar4Url],
         ),
       ),
     );
   }
 
   Widget _buildAvatarGroupStackedTopToBottom() {
-    return Card(
-      margin: const EdgeInsets.symmetric(
-        horizontal: 4 * 4,
-      ),
-      child: Container(
-        padding: const EdgeInsets.all(4 * 4),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: List.generate(
-            3,
-            (int index) => AvatarGroupTopToBottom(
-              size: 6 + (index * 2),
-              overlap: (index * 2 / 6).ceil() + 1,
-              srcs: const [_avatar1Url, _avatar2Url, _avatar3Url, _avatar4Url],
-            ),
-          ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: List.generate(
+        3,
+        (int index) => AvatarGroupTopToBottom(
+          size: 6 + (index * 2),
+          overlap: (index * 2 / 6).ceil() + 1,
+          srcs: const [_avatar1Url, _avatar2Url, _avatar3Url, _avatar4Url],
         ),
       ),
     );
   }
 
   Widget _buildWithText() {
-    return Card(
-      margin: const EdgeInsets.symmetric(
-        horizontal: 4 * 4,
-      ),
-      child: Container(
-        padding: const EdgeInsets.all(4 * 4),
-        alignment: Alignment.center,
-        child: const ProfileTile(
-          src: _avatar4Url,
-          name: 'Tom Cook',
-        ),
+    return const Center(
+      child: ProfileTile(
+        src: _avatar4Url,
+        name: 'Tom Cook',
       ),
     );
   }
