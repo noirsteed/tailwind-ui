@@ -54,9 +54,26 @@ class AvatarsPage extends StatelessWidget {
           height: 4 * 4,
         ),
         const ListTile(
+          title: Text('Rounded avatars with top notification'),
+        ),
+        _buildRoundedAvatarsWithTopNotification(),
+        const SizedBox(
+          height: 4 * 4,
+        ),
+        const ListTile(
           title: Text('Circular avatars with bottom notification'),
         ),
         _buildCircularAvatarsWithBottomNotification(),
+        const SizedBox(
+          height: 4 * 4,
+        ),
+        const ListTile(
+          title: Text('Rounded avatars with bottom notification'),
+        ),
+        _buildRoundedAvatarsWithBottomNotification(),
+        const SizedBox(
+          height: 4 * 4,
+        ),
       ],
     );
   }
@@ -129,6 +146,30 @@ class AvatarsPage extends StatelessWidget {
     );
   }
 
+  Widget _buildRoundedAvatarsWithTopNotification() {
+    return Card(
+      margin: const EdgeInsets.symmetric(
+        horizontal: 4 * 4,
+      ),
+      child: Container(
+        padding: const EdgeInsets.all(4 * 4),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: List.generate(
+            6,
+            (int index) => RoundedAvatarWithNotification(
+              size: 6 + (index * 2),
+              src: _avatarUrl,
+              notificationAlignment: Alignment.topRight,
+              notificationColor: _notificationColors[index % 3],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget _buildCircularAvatarsWithBottomNotification() {
     return Card(
       margin: const EdgeInsets.symmetric(
@@ -142,6 +183,30 @@ class AvatarsPage extends StatelessWidget {
           children: List.generate(
             6,
             (int index) => CircularAvatarWithNotification(
+              size: 6 + (index * 2),
+              src: _avatarUrl,
+              notificationAlignment: Alignment.bottomRight,
+              notificationColor: _notificationColors[index % 3],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildRoundedAvatarsWithBottomNotification() {
+    return Card(
+      margin: const EdgeInsets.symmetric(
+        horizontal: 4 * 4,
+      ),
+      child: Container(
+        padding: const EdgeInsets.all(4 * 4),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: List.generate(
+            6,
+            (int index) => RoundedAvatarWithNotification(
               size: 6 + (index * 2),
               src: _avatarUrl,
               notificationAlignment: Alignment.bottomRight,
