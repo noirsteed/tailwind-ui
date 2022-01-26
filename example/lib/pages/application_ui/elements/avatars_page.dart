@@ -74,6 +74,13 @@ class AvatarsPage extends StatelessWidget {
         const SizedBox(
           height: 4 * 4,
         ),
+        const ListTile(
+          title: Text('Circular avatars with placeholder icon'),
+        ),
+        _buildCircularAvatarsWithPlaceholderIcon(),
+        const SizedBox(
+          height: 4 * 4,
+        ),
       ],
     );
   }
@@ -211,6 +218,27 @@ class AvatarsPage extends StatelessWidget {
               src: _avatarUrl,
               notificationAlignment: Alignment.bottomRight,
               notificationColor: _notificationColors[index % 3],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCircularAvatarsWithPlaceholderIcon() {
+    return Card(
+      margin: const EdgeInsets.symmetric(
+        horizontal: 4 * 4,
+      ),
+      child: Container(
+        padding: const EdgeInsets.all(4 * 4),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: List.generate(
+            5,
+            (int index) => CircularAvatarWithPlaceholderIcon(
+              size: 6 + (index * 2),
             ),
           ),
         ),

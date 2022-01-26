@@ -10,6 +10,7 @@ dependencies:
     sdk: flutter
   tailwind:
     path: ../tailwind
+  flutter_svg: ^1.0.0
 
 dev_dependencies:
   flutter_test:
