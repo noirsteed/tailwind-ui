@@ -112,6 +112,13 @@ class AvatarsPage extends StatelessWidget {
         const SizedBox(
           height: 4 * 4,
         ),
+        const ListTile(
+          title: Text('Avatar group stacked top to bottom'),
+        ),
+        _buildAvatarGroupStackedTopToBottom(),
+        const SizedBox(
+          height: 4 * 4,
+        ),
       ],
     );
   }
@@ -313,6 +320,29 @@ class AvatarsPage extends StatelessWidget {
           children: List.generate(
             3,
             (int index) => AvatarGroupBottomToTop(
+              size: 6 + (index * 2),
+              overlap: (index * 2 / 6).ceil() + 1,
+              srcs: const [_avatar1Url, _avatar2Url, _avatar3Url, _avatar4Url],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildAvatarGroupStackedTopToBottom() {
+    return Card(
+      margin: const EdgeInsets.symmetric(
+        horizontal: 4 * 4,
+      ),
+      child: Container(
+        padding: const EdgeInsets.all(4 * 4),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: List.generate(
+            3,
+            (int index) => AvatarGroupTopToBottom(
               size: 6 + (index * 2),
               overlap: (index * 2 / 6).ceil() + 1,
               srcs: const [_avatar1Url, _avatar2Url, _avatar3Url, _avatar4Url],
