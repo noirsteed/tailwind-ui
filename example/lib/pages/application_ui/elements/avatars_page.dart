@@ -3,7 +3,16 @@ import 'package:tailwind/tailwind.dart' as tailwind;
 import 'package:tailwind_ui/tailwind_ui.dart';
 
 class AvatarsPage extends StatelessWidget {
-  static const String _avatarUrl = 'https://images.unsplash.com/'
+  static const String _avatar1Url = 'https://images.unsplash.com/'
+      'photo-1491528323818-fdd1faba62cc'
+      '?fit=facearea&facepad=2&w=256&h=256&q=80';
+  static const String _avatar2Url = 'https://images.unsplash.com/'
+      'photo-1550525811-e5869dd03032'
+      '?fit=facearea&facepad=2&w=256&h=256&q=80';
+  static const String _avatar3Url = 'https://images.unsplash.com/'
+      'photo-1500648767791-00dcc994a43e'
+      '?fit=facearea&facepad=2&w=256&h=256&q=80';
+  static const String _avatar4Url = 'https://images.unsplash.com/'
       'photo-1472099645785-5658abf4ff4e'
       '?fit=facearea&facepad=2&w=256&h=256&q=80';
 
@@ -96,6 +105,13 @@ class AvatarsPage extends StatelessWidget {
         const SizedBox(
           height: 4 * 4,
         ),
+        const ListTile(
+          title: Text('Avatar group stacked bottom to top'),
+        ),
+        _buildAvatarGroupStackedBottomToTop(),
+        const SizedBox(
+          height: 4 * 4,
+        ),
       ],
     );
   }
@@ -114,7 +130,7 @@ class AvatarsPage extends StatelessWidget {
             5,
             (int index) => CircularAvatar(
               size: 6 + (index * 2),
-              src: _avatarUrl,
+              src: _avatar4Url,
             ),
           ),
         ),
@@ -136,7 +152,7 @@ class AvatarsPage extends StatelessWidget {
             5,
             (int index) => RoundedAvatar(
               size: 6 + (index * 2),
-              src: _avatarUrl,
+              src: _avatar4Url,
             ),
           ),
         ),
@@ -158,7 +174,7 @@ class AvatarsPage extends StatelessWidget {
             6,
             (int index) => CircularAvatarWithNotification(
               size: 6 + (index * 2),
-              src: _avatarUrl,
+              src: _avatar4Url,
               notificationAlignment: Alignment.topRight,
               notificationColor: _notificationColors[index % 3],
             ),
@@ -182,7 +198,7 @@ class AvatarsPage extends StatelessWidget {
             6,
             (int index) => RoundedAvatarWithNotification(
               size: 6 + (index * 2),
-              src: _avatarUrl,
+              src: _avatar4Url,
               notificationAlignment: Alignment.topRight,
               notificationColor: _notificationColors[index % 3],
             ),
@@ -206,7 +222,7 @@ class AvatarsPage extends StatelessWidget {
             6,
             (int index) => CircularAvatarWithNotification(
               size: 6 + (index * 2),
-              src: _avatarUrl,
+              src: _avatar4Url,
               notificationAlignment: Alignment.bottomRight,
               notificationColor: _notificationColors[index % 3],
             ),
@@ -230,7 +246,7 @@ class AvatarsPage extends StatelessWidget {
             6,
             (int index) => RoundedAvatarWithNotification(
               size: 6 + (index * 2),
-              src: _avatarUrl,
+              src: _avatar4Url,
               notificationAlignment: Alignment.bottomRight,
               notificationColor: _notificationColors[index % 3],
             ),
@@ -277,6 +293,29 @@ class AvatarsPage extends StatelessWidget {
               size: 6 + (index * 2),
               fontSize: _initialsSizes[index],
               initials: 'TW',
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildAvatarGroupStackedBottomToTop() {
+    return Card(
+      margin: const EdgeInsets.symmetric(
+        horizontal: 4 * 4,
+      ),
+      child: Container(
+        padding: const EdgeInsets.all(4 * 4),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: List.generate(
+            3,
+            (int index) => AvatarGroupBottomToTop(
+              size: 6 + (index * 2),
+              overlap: (index * 2 / 6).ceil() + 1,
+              srcs: const [_avatar1Url, _avatar2Url, _avatar3Url, _avatar4Url],
             ),
           ),
         ),
